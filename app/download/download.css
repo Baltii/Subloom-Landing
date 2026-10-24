@@ -2,9 +2,11 @@
 .download-hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: center; padding-block: 64px 80px; }
 .download-intro h1 { font-size: clamp(42px, 4.65vw, 67px); line-height: 1.08; }
 .download-intro > p { max-width: 470px; margin-top: 28px; font-size: 18px; }
-.download-intro .download-reassurance { margin-top: 24px; font-size: 14px; color: var(--secondary); }
+.download-hero-note { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; margin-top: 20px; }
+.download-reassurance { font-size: 14px; color: var(--secondary); }
+.download-hero-note .motion-control { font-size: 13px; }
 .download-art { display: grid; place-items: center; background: var(--mint); border-radius: var(--radius); padding: 32px 10px; }
-.download-art img { width: min(100%, 420px); animation: download-settle 850ms var(--ease); }
+.download-art img { width: min(100%, 420px); }
 .download-section-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 32px; }
 .download-section-heading h2 { font-size: clamp(30px, 3vw, 40px); }
 .download-release-line { display: flex; flex-wrap: wrap; gap: 8px 16px; color: var(--secondary); font-size: 14px; line-height: 1.6; }
@@ -31,13 +33,23 @@
 .download-browser-inner h2 { margin-top: 20px; font-size: clamp(30px, 3vw, 40px); }
 .download-browser-inner p { margin-top: 20px; }
 .download-browser-inner .button { flex-shrink: 0; }
-.download-help { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; margin-block: 104px 64px; }
-.download-help h2 { font-size: clamp(30px, 3vw, 40px); }
-.download-help-content { display: grid; gap: 12px; align-content: start; }
-.download-help details { background: var(--paper); padding: 20px 24px; border-radius: 16px; }
-.download-help summary { font-size: 16px; line-height: 1.5; font-weight: 600; }
-.download-help details[open] { background: var(--mint-light); }
-.download-help details p { margin-top: 16px; font-size: 16px; }
+.download-help { margin-block: 104px 64px; }
+/* One short arrival sequence, with the installer list joining as it enters view. */
+@media (prefers-reduced-motion: no-preference) {
+  .download-intro h1 { animation: download-intro-arrive 650ms var(--ease) both; }
+  .download-intro > p { animation: download-intro-arrive 650ms 70ms var(--ease) both; }
+  .download-intro > .app-actions { animation: download-intro-arrive 650ms 140ms var(--ease) both; }
+  .download-art img { animation: download-settle 800ms 100ms var(--ease) both; }
+  .download-platform.revealed { animation: download-row-arrive 500ms var(--ease) both; }
+  .download-platform.revealed:nth-child(2) { animation-delay: 60ms; }
+  .download-platform.revealed:nth-child(3) { animation-delay: 120ms; }
+  html[data-motion="off"] :is(.download-intro h1, .download-intro > p, .download-intro > .app-actions, .download-art img) { animation-play-state: paused; }
+  .download-action > svg { transition: transform 220ms var(--ease); }
+  .download-action:is(:hover, :focus-visible) > svg { transform: translateY(2px); }
+  .download-intro .button:is(:hover, :focus-visible) > svg { transform: translateY(3px); }
+}
+@keyframes download-intro-arrive { from { opacity: .8; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes download-row-arrive { from { opacity: .8; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes download-settle { from { transform: translateY(12px) rotate(-3deg); } to { transform: translateY(0) rotate(0); } }
 @media (max-width: 1050px) {
   .download-hero { gap: 28px; }
@@ -45,7 +57,6 @@
   .platform-guidance { grid-column: 1; }
   .platform-installers { grid-column: 2; grid-row: 1 / 3; }
   .download-browser-inner { padding: 36px; gap: 28px; }
-  .download-help { gap: 32px; }
 }
 @media (max-width: 700px) {
   .download-hero { grid-template-columns: 1fr; padding-block: 36px 48px; gap: 32px; }
@@ -59,8 +70,7 @@
   .installer-option { max-width: none; }
   .download-browser { margin-top: 64px; }
   .download-browser-inner { display: flex; flex-direction: column; align-items: flex-start; padding: 28px; }
-  .download-help { grid-template-columns: 1fr; gap: 28px; margin-block: 64px 16px; }
-  .download-help details { padding: 20px; }
+  .download-help { margin-block: 64px 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .download-art img { animation: none; }

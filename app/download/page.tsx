@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowDown, ArrowDownToLine, ArrowUpRight, ExternalLink, Globe2, Laptop2, MonitorDown, Smartphone } from "lucide-react";
+import { FaqList, Motion } from "../../components/experience";
 import { getLatestRelease, type InstallAsset } from "./release";
 import "./download.css";
 
 const webAppUrl = "https://subloom.baltii.tn";
 const releasesUrl = "https://github.com/Baltii/Subloom/releases/latest";
+const installationQuestions = [
+  ["Which Mac download should I choose?", "Open the Apple menu and choose About This Mac. If it lists an Apple chip, choose Apple silicon. If it lists an Intel processor, choose Intel Mac."],
+  ["What should I know about these builds?", "Windows installers are unsigned. Mac apps are ad-hoc signed and are not notarized by Apple. If your device blocks installation, you can use Subloom in your browser. Android test APKs use a test signing key and cannot update a store-signed installation. Export your guest data before replacing an existing installation."],
+  ["Can I use Subloom on iPhone or iPad?", "Use Subloom in your browser on iPhone or iPad. A public iOS download is not available yet."],
+];
 
 export const metadata: Metadata = {
   title: "Download Subloom — Android, macOS, Windows or Web",
@@ -42,7 +48,7 @@ export default async function DownloadPage() {
           <h1 id="download-title">A calmer view.<br/>On your device.</h1>
           <p>Bring your subscriptions together with Subloom for Android, Mac or Windows. Or start right in your browser.</p>
           <div className="app-actions"><a className="button" href="#download-options">Choose your device <ArrowDown size={18} aria-hidden="true"/></a><a className="app-download-link" href={webAppUrl}>Open in browser <ArrowUpRight size={17} aria-hidden="true"/></a></div>
-          <p className="download-reassurance">No bank connection. Start without an account.</p>
+          <div className="download-hero-note"><p className="download-reassurance">No bank connection. Start without an account.</p><Motion/></div>
         </div>
         <div className="download-art"><Image src="/illustrations/wallet-coins.webp" width={500} height={405} alt="Subloom’s green wallet with gold coins" priority sizes="(max-width: 600px) 220px, (max-width: 900px) 300px, 420px"/></div>
       </section>
@@ -52,17 +58,17 @@ export default async function DownloadPage() {
           <div className="download-release-line">{release ? <><span>{release.tag}{releaseDate && <> · {releaseDate}</>}</span><a href={release.url}>Release notes <ExternalLink size={14} aria-hidden="true"/></a></> : <span>Release details couldn’t load. <a href={releasesUrl}>Find downloads on GitHub <ExternalLink size={14} aria-hidden="true"/></a></span>}</div>
         </div>
         <div className="download-list">
-          <article className="download-platform">
+          <article className="download-platform" data-reveal="download-row">
             <div className="platform-heading"><Smartphone size={26} strokeWidth={1.6} aria-hidden="true"/><div><h3>Android</h3><p>Your overview, on the go.</p></div></div>
             <p className="platform-guidance">Open the APK on your Android device to install.{androidTest && <> This release is a test build.</>}</p>
             <div className="platform-installers"><DownloadAction asset={release?.android ?? null} label="Download APK" platform="Android"/></div>
           </article>
-          <article className="download-platform">
+          <article className="download-platform" data-reveal="download-row">
             <div className="platform-heading"><Laptop2 size={26} strokeWidth={1.6} aria-hidden="true"/><div><h3>macOS</h3><p>A little clarity for your Mac.</p></div></div>
             <p className="platform-guidance">Requires macOS 14 or later. Unzip, then move Subloom.app to Applications.</p>
             <div className="platform-installers"><DownloadAction asset={release?.macArm ?? null} label="Apple silicon" platform="macOS"/><DownloadAction asset={release?.macIntel ?? null} label="Intel Mac" platform="macOS"/></div>
           </article>
-          <article className="download-platform">
+          <article className="download-platform" data-reveal="download-row">
             <div className="platform-heading"><MonitorDown size={26} strokeWidth={1.6} aria-hidden="true"/><div><h3>Windows</h3><p>Room to see the whole picture.</p></div></div>
             <p className="platform-guidance">For 64-bit PCs. Download the installer, then follow the setup prompts.</p>
             <div className="platform-installers"><DownloadAction asset={release?.windows ?? null} label="Download installer" platform="Windows"/></div>
@@ -76,10 +82,9 @@ export default async function DownloadPage() {
         <a className="button" href={webAppUrl}>Open in browser <ArrowUpRight size={18} aria-hidden="true"/></a>
       </div></section>
 
-      <section className="download-help container" aria-labelledby="install-title"><h2 id="install-title">Before you install</h2><div className="download-help-content">
-        <details><summary>Which Mac download should I choose?</summary><p>Open the Apple menu and choose About This Mac. If it lists an Apple chip, choose Apple silicon. If it lists an Intel processor, choose Intel Mac.</p></details>
-        <details><summary>What should I know about these builds?</summary><p>Windows installers are unsigned. Mac apps are ad-hoc signed and are not notarized by Apple. If your device blocks installation, you can use Subloom in your browser.</p><p>Android test APKs use a test signing key and cannot update a store-signed installation. Export your guest data before replacing an existing installation.</p></details>
-        <details><summary>Can I use Subloom on iPhone or iPad?</summary><p>Use Subloom in your browser on iPhone or iPad. A public iOS download is not available yet.</p></details>
-      </div></section>
+      <section className="faq download-help container" aria-labelledby="install-title">
+        <div><h2 id="install-title">Before you install</h2></div>
+        <FaqList questions={installationQuestions}/>
+      </section>
   </>;
 }

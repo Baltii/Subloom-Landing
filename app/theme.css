@@ -4,7 +4,7 @@
   --spotlight: #182d25;
   --on-spotlight: #fff;
   --spotlight-detail: #cadfc2;
-  --action: #182d25;
+  --action: #087c65;
   --on-action: #fff;
   --action-hover: #066551;
   --frame: #182d25;
@@ -16,20 +16,20 @@
   --ground: #101a16;
   --paper: #18251e;
   --ink: #e7f2e9;
-  --secondary: #adc1b2;
+  --secondary: #a0b4a5;
   --green: #70d2ad;
   --pressed: #9be2c4;
-  --mint: #243e2e;
-  --mint-deep: #33543d;
-  --mint-light: #1b2e23;
+  --mint: #243f30;
+  --mint-deep: #2b4b36;
+  --mint-light: #243f30;
   --lilac: #302b3b;
-  --line: #33503e;
+  --line: #2a3a30;
   --spotlight: #203c2d;
   --on-spotlight: #e7f2e9;
   --spotlight-detail: #cadfcf;
-  --action: #e1f0de;
-  --on-action: #182d25;
-  --action-hover: #9be2c4;
+  --action: #70d2ad;
+  --on-action: #102219;
+  --action-hover: #ade9cc;
   --frame: #33543d;
   --logo-mark: #e1f0de;
   --logo-wordmark: #e1f0de;
@@ -39,11 +39,11 @@
   :root:not([data-theme]) {
     color-scheme: dark;
     --ground: #101a16; --paper: #18251e; --ink: #e7f2e9;
-    --secondary: #adc1b2; --green: #70d2ad; --pressed: #9be2c4;
-    --mint: #243e2e; --mint-deep: #33543d; --mint-light: #1b2e23;
-    --lilac: #302b3b; --line: #33503e;
+    --secondary: #a0b4a5; --green: #70d2ad; --pressed: #9be2c4;
+    --mint: #243f30; --mint-deep: #2b4b36; --mint-light: #243f30;
+    --lilac: #302b3b; --line: #2a3a30;
     --spotlight: #203c2d; --on-spotlight: #e7f2e9; --spotlight-detail: #cadfcf;
-    --action: #e1f0de; --on-action: #182d25; --action-hover: #9be2c4;
+    --action: #70d2ad; --on-action: #102219; --action-hover: #ade9cc;
     --frame: #33543d; --logo-mark: #e1f0de; --logo-wordmark: #e1f0de;
   }
 }
@@ -89,13 +89,6 @@
 .nav-utilities { display: flex; align-items: center; gap: 10px; }
 .icon-link { display: grid; place-items: center; width: 44px; min-height: 44px; border-radius: 50%; color: var(--ink); transition: background 180ms ease, color 180ms ease; }
 .icon-link:hover { background: var(--mint); color: var(--green); }
-.platform-download { display: inline-flex; align-items: center; gap: 12px; max-width: 100%; padding: 11px 15px; margin-top: 24px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; transition: transform 260ms var(--ease), border-color 260ms ease; }
-.platform-download:hover { transform: translateY(-3px); border-color: var(--green); }
-.platform-download-icon { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; color: var(--green); background: var(--mint-light); flex-shrink: 0; }
-.platform-download-copy { display: grid; gap: 3px; text-align: left; }
-.platform-download-copy small { color: var(--secondary); font-size: 10px; }
-.platform-download-copy strong { color: var(--ink); font-size: 13px; font-weight: 600; }
-.platform-download > svg { margin-left: 14px; color: var(--green); }
 @media (max-width: 1000px) {
   .header-actions { gap: 14px; }
   .nav-links { gap: 14px; }
@@ -106,13 +99,48 @@
   .header-actions { gap: 8px; }
   .nav-utilities { margin-top: 12px; }
   .nav-utilities .button-small { margin-top: 0; flex: 1; }
-  .platform-download { padding: 10px 12px; gap: 9px; margin-top: 22px; }
-  .platform-download-copy strong { font-size: 12px; }
-  .platform-download > svg { margin-left: 2px; }
 }
 @media (max-width: 360px) {
   .nav-utilities { gap: 5px; }
   .nav-utilities .button-small { padding-inline: 12px; font-size: 12px; gap: 6px; }
-  .platform-download { padding-inline: 10px; }
-  .platform-download-copy strong { font-size: 11px; }
+}
+
+/* A shared action pair gives every landing CTA the same destinations. */
+.app-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 32px; }
+.app-download-link { display: inline-flex; align-items: center; gap: 9px; min-height: 48px; font-size: 15px; font-weight: 600; text-decoration: underline; text-decoration-color: transparent; transition: color 180ms ease, text-decoration-color 180ms ease; }
+.app-download-link:hover { color: var(--green); text-decoration-color: currentColor; }
+.app-actions-inverse .app-download-link { color: var(--on-spotlight); }
+.app-actions-inverse .app-download-link:hover { color: var(--spotlight-detail); }
+.hero-copy > .platform-note { margin-top: 16px; font-size: 14px; color: var(--secondary); }
+.app-actions > .button { margin-top: 0; }
+.nav-links > a[aria-current="page"] { color: var(--green); }
+@media (max-width: 1100px) and (min-width: 601px) {
+  .nav-links { gap: 12px; font-size: 13px; }
+  .nav-utilities .button-small { margin-left: 0; padding-inline: 14px; gap: 8px; }
+  .brand .brand-lockup { width: 145px; }
+}
+@media (max-width: 900px) {
+  .header { position: relative; z-index: 10; }
+  .menu-toggle { display: grid; place-items: center; padding: 11px; margin-right: -9px; background: transparent; border-radius: 50%; }
+  .nav-links { display: none; position: absolute; top: calc(100% - 8px); left: 0; right: 0; background: var(--paper); border-radius: 16px; padding: 20px; align-items: stretch; gap: 4px; font-size: 16px; }
+  .nav-links.is-open { display: flex; flex-direction: column; }
+  .nav-links > a:not(.button) { padding: 12px 8px; }
+  .nav-utilities { margin-top: 12px; }
+  .nav-utilities .button-small { margin-left: 0; margin-top: 0; }
+}
+@media (max-width: 600px) {
+  .app-actions { gap: 8px 20px; margin-top: 26px; }
+  .app-actions .button { padding-inline: 20px; gap: 16px; }
+  .app-download-link { font-size: 14px; }
+}
+
+/* Footer typography and links remain readable in the shared mobile frame. */
+.footer-links > a { display: inline-flex; align-items: center; gap: 8px; }
+.footer-links { font-size: 14px; }
+.footer-bottom { font-size: 13px; }
+@media (max-width: 600px) {
+  .footer-top { flex-direction: column; }
+  .footer-top p { font-size: 14px; }
+  .footer-links { grid-template-columns: 1fr 1fr; gap: 18px 24px; width: 100%; font-size: 14px; }
+  .footer-bottom { font-size: 13px; }
 }

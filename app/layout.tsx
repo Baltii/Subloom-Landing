@@ -4,6 +4,7 @@ import "./globals.css";
 import "./features.css";
 import "./theme.css";
 import { themeBootstrap } from "../components/theme-init";
+import { SiteLayout } from "../components/site-layout";
 
 const manrope = localFont({ src: "../public/fonts/manrope-bold.ttf", variable: "--font-display", weight: "700", display: "swap" });
 const dmSans = localFont({ src: [
@@ -11,10 +12,10 @@ const dmSans = localFont({ src: [
   { path: "../public/fonts/dm-sans-semibold.ttf", weight: "600" },
 ], variable: "--font-body", display: "swap" });
 
-const productionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL;
+const siteUrl = "https://subloom-landing.baltii.tn";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(productionHost ? `https://${productionHost}` : "http://localhost:3000"),
+  metadataBase: new URL(siteUrl),
   alternates: { canonical: "/" },
   title: "Subloom — Subscriptions, in a calmer place",
   description: "Spot forgotten subscriptions, review recurring charges, and see renewals coming. Subloom helps you decide what is still worth paying for.",
@@ -23,8 +24,8 @@ export const metadata: Metadata = {
   icons: { icon: "/icon.svg", apple: "/apple-touch-icon.png" },
 };
 
-export const viewport: Viewport = { themeColor: [{ media: "(prefers-color-scheme: light)", color: "#F4F5ED" }, { media: "(prefers-color-scheme: dark)", color: "#101A16" }], colorScheme: "light dark" };
+export const viewport: Viewport = { themeColor: [{ media: "(prefers-color-scheme: light)", color: "#F8FAF8" }, { media: "(prefers-color-scheme: dark)", color: "#101A16" }], colorScheme: "light dark" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" suppressHydrationWarning className={`${manrope.variable} ${dmSans.variable}`}><head><script dangerouslySetInnerHTML={{ __html: themeBootstrap }}/></head><body>{children}</body></html>;
+  return <html lang="en" suppressHydrationWarning className={`${manrope.variable} ${dmSans.variable}`}><head><script dangerouslySetInnerHTML={{ __html: themeBootstrap }}/></head><body><SiteLayout>{children}</SiteLayout></body></html>;
 }

@@ -16,7 +16,7 @@ export function Brand({
   return (
     <a
       className={`brand${large ? " brand-large" : ""}`}
-      href="#top"
+      href="/"
       aria-label="Subloom home"
     >
       <svg

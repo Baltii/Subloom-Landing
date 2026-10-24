@@ -22,7 +22,7 @@ export function ThemeControl() {
       const resolved = current === "system" ? (preference.matches ? "dark" : "light") : current;
       document.documentElement.dataset.theme = resolved;
       document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]').forEach(meta => {
-        meta.content = resolved === "dark" ? "#101A16" : "#F4F5ED";
+        meta.content = resolved === "dark" ? "#101A16" : "#F8FAF8";
       });
     };
     const update = (event: Event) => {

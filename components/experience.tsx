@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ArrowDownLeft, ArrowUpRight, Bell, CalendarDays, Check, ChevronRight, Github, Home, LayoutGrid, Menu, Pause, Play, Plus, X } from "lucide-react";
 
 import { ThemeControl } from "./theme";
@@ -22,13 +23,14 @@ const subscriptions = [
 ] as const;
 const money = (value: number) => new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" }).format(value);
 
-export function Navigation({ downloadPage = false }: { downloadPage?: boolean }) {
+export function Navigation() {
+  const downloadPage = usePathname() === "/download";
   const [open, setOpen] = useState(false);
-  const actionUrl = downloadPage ? "https://subloom.baltii.tn" : "/download";
-  const actionLabel = downloadPage ? "Open in browser" : "Get Subloom";
-  return <div className="header-actions"><button className="menu-toggle" aria-expanded={open} aria-controls="main-nav" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
-    <nav id="main-nav" className={open ? "nav-links is-open" : "nav-links"} aria-label="Main navigation">
-      <a href="/#features" onClick={() => setOpen(false)}>Why Subloom</a><a href="/#preview" onClick={() => setOpen(false)}>Take a look</a><a href="/#questions" onClick={() => setOpen(false)}>FAQs</a><a href="/download" onClick={() => setOpen(false)}>Download</a>
+  const actionUrl = "https://subloom.baltii.tn";
+  const actionLabel = "Open in browser";
+  return <div className="header-actions"><button className="menu-toggle" aria-expanded={open} aria-controls="main-nav" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen(!open)} onKeyDown={event => { if (event.key === "Escape") setOpen(false); }}>{open ? <X /> : <Menu />}</button>
+    <nav id="main-nav" className={open ? "nav-links is-open" : "nav-links"} aria-label="Main navigation" onKeyDown={event => { if (event.key === "Escape") setOpen(false); }}>
+      <a href="/#features" onClick={() => setOpen(false)}>Why Subloom</a><a href="/#preview" onClick={() => setOpen(false)}>Take a look</a><a href="/#questions" onClick={() => setOpen(false)}>FAQs</a><a href="/download" aria-current={downloadPage ? "page" : undefined} onClick={() => setOpen(false)}>Download</a>
       <div className="nav-utilities"><a className="button button-small" href={actionUrl}>{actionLabel} <ArrowUpRight size={16} /></a><ThemeControl/><a className="icon-link" href="https://github.com/Baltii/Subloom" target="_blank" rel="noopener noreferrer" aria-label="View Subloom on GitHub (opens in a new tab)" title="Subloom on GitHub"><Github size={21} aria-hidden="true"/></a></div>
     </nav></div>;
 }

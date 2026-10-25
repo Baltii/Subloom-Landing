@@ -24,13 +24,14 @@ const subscriptions = [
 const money = (value: number) => new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" }).format(value);
 
 export function Navigation() {
-  const downloadPage = usePathname() === "/download";
+  const pathname = usePathname();
+  const downloadPage = pathname === "/download";
   const [open, setOpen] = useState(false);
   const actionUrl = "https://subloom.baltii.tn";
   const actionLabel = "Open in browser";
   return <div className="header-actions"><button className="menu-toggle" aria-expanded={open} aria-controls="main-nav" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen(!open)} onKeyDown={event => { if (event.key === "Escape") setOpen(false); }}>{open ? <X /> : <Menu />}</button>
     <nav id="main-nav" className={open ? "nav-links is-open" : "nav-links"} aria-label="Main navigation" onKeyDown={event => { if (event.key === "Escape") setOpen(false); }}>
-      <a href="/#features" onClick={() => setOpen(false)}>Why Subloom</a><a href="/#preview" onClick={() => setOpen(false)}>Take a look</a><a href="/#questions" onClick={() => setOpen(false)}>FAQs</a><a href="/download" aria-current={downloadPage ? "page" : undefined} onClick={() => setOpen(false)}>Download</a>
+      <a href="/#features" onClick={() => setOpen(false)}>Why Subloom</a><a href="/#preview" onClick={() => setOpen(false)}>Take a look</a><a href="/#questions" onClick={() => setOpen(false)}>FAQs</a><a href="/feedback" aria-current={pathname === "/feedback" ? "page" : undefined} onClick={() => setOpen(false)}>Ideas & feedback</a><a href="/download" aria-current={downloadPage ? "page" : undefined} onClick={() => setOpen(false)}>Download</a>
       <div className="nav-utilities"><a className="button button-small" href={actionUrl}>{actionLabel} <ArrowUpRight size={16} /></a><ThemeControl/><a className="icon-link" href="https://github.com/Baltii/Subloom" target="_blank" rel="noopener noreferrer" aria-label="View Subloom on GitHub (opens in a new tab)" title="Subloom on GitHub"><Github size={21} aria-hidden="true"/></a></div>
     </nav></div>;
 }

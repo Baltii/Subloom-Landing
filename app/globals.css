@@ -463,3 +463,11 @@ html[data-motion=off] :is(.hero-stage, .hero-ui-wrap, .hero-wallet, .renewal-not
   [data-depth] { --pointer-x: 0px !important; --pointer-y: 0px !important; }
   .button:hover, .button:active, .button:focus-visible, .button > svg, .round-arrow, .feature-symbol, .demo-row, .demo-row .service-icon, .custom-check svg { transform: none !important; }
 }
+
+.feedback-invite { display: flex; align-items: center; justify-content: center; gap: 64px; border-top: 1px solid var(--line); padding-top: 64px; }
+.feedback-invite > img { width: 180px; height: auto; }
+.feedback-invite h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.15; margin: 0 0 18px; }
+.feedback-invite p { color: var(--secondary); font-size: 17px; line-height: 1.7; max-width: 460px; margin: 0 0 20px; }
+.feedback-invite-link { display: inline-flex; align-items: center; gap: 10px; color: var(--green); font-weight: 600; min-height: 44px; }
+@media (max-width: 700px) { .feedback-invite { gap: 24px; align-items: start; padding-top: 40px; } .feedback-invite > img { width: 110px; } .feedback-invite p { font-size: 15px; } }
+@media (max-width: 400px) { .feedback-invite { flex-direction: column; gap: 16px; } }

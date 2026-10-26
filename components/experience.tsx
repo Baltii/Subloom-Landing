@@ -33,7 +33,7 @@ export function Navigation() {
     <nav id="main-nav" className={open ? "nav-links is-open" : "nav-links"} aria-label="Main navigation" onKeyDown={event => { if (event.key === "Escape") setOpen(false); }}>
       <a href="/#features" onClick={() => setOpen(false)}>Why Subloom</a><a href="/#preview" onClick={() => setOpen(false)}>Take a look</a><a href="/#questions" onClick={() => setOpen(false)}>FAQs</a><a href="/feedback" aria-current={pathname === "/feedback" ? "page" : undefined} onClick={() => setOpen(false)}>Ideas & feedback</a><a href="/download" aria-current={downloadPage ? "page" : undefined} onClick={() => setOpen(false)}>Download</a>
       <div className="nav-utilities"><a className="button button-small" href={actionUrl}>{actionLabel} <ArrowUpRight size={16} /></a><ThemeControl/>
-      // Disabled GitHub link for now.
+      {/* Disabled GitHub link for now. */}
       {/* <a className="icon-link" href="https://github.com/Baltii/Subloom" target="_blank" rel="noopener noreferrer" aria-label="View Subloom on GitHub (opens in a new tab)" title="Subloom on GitHub"><Github size={21} aria-hidden="true"/></a> */}
       </div>
     </nav></div>;

@@ -23,5 +23,6 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - run: node scripts/check-domains.mjs
       - run: npm run typecheck
       - run: npm run build

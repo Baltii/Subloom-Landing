@@ -5,7 +5,7 @@ import { FaqList, Motion } from "../../components/experience";
 import { getLatestRelease, type InstallAsset } from "./release";
 import "./download.css";
 
-const webAppUrl = "https://subloom.baltii.tn";
+const webAppUrl = "https://app.subloom.tn";
 const releasesUrl = "https://github.com/Baltii/Subloom/releases/latest";
 const installationQuestions = [
   ["Which Mac download should I choose?", "Open the Apple menu and choose About This Mac. If it lists an Apple chip, choose Apple silicon. If it lists an Intel processor, choose Intel Mac."],

@@ -27,7 +27,7 @@ export function Navigation() {
   const pathname = usePathname();
   const downloadPage = pathname === "/download";
   const [open, setOpen] = useState(false);
-  const actionUrl = "https://subloom.baltii.tn";
+  const actionUrl = "https://app.subloom.tn";
   const actionLabel = "Open in browser";
   return <div className="header-actions"><button className="menu-toggle" aria-expanded={open} aria-controls="main-nav" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen(!open)} onKeyDown={event => { if (event.key === "Escape") setOpen(false); }}>{open ? <X /> : <Menu />}</button>
     <nav id="main-nav" className={open ? "nav-links is-open" : "nav-links"} aria-label="Main navigation" onKeyDown={event => { if (event.key === "Escape") setOpen(false); }}>

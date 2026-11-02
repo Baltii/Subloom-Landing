@@ -12,7 +12,7 @@ const dmSans = localFont({ src: [
   { path: "../public/fonts/dm-sans-semibold.ttf", weight: "600" },
 ], variable: "--font-body", display: "swap" });
 
-const siteUrl = "https://subloom-landing.baltii.tn";
+const siteUrl = "https://subloom.tn";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

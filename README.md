@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://subloom-landing.baltii.tn">
+  <a href="https://subloom.tn">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="public/social-dark.png">
       <source media="(prefers-color-scheme: light)" srcset="public/social.png">
@@ -17,9 +17,9 @@
 </p>
 
 <p align="center">
-  <a href="https://subloom-landing.baltii.tn"><img src="https://img.shields.io/website?url=https%3A%2F%2Fsubloom-landing.baltii.tn&amp;style=flat-square&amp;label=website&amp;up_message=online&amp;down_message=unavailable&amp;up_color=087C65" alt="Website availability"></a>
+  <a href="https://subloom.tn"><img src="https://img.shields.io/website?url=https%3A%2F%2Fsubloom.tn&amp;style=flat-square&amp;label=website&amp;up_message=online&amp;down_message=unavailable&amp;up_color=087C65" alt="Website availability"></a>
   <a href="https://github.com/Baltii/Subloom-Landing/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Baltii/Subloom-Landing/ci.yml?branch=main&amp;style=flat-square&amp;logo=github&amp;label=checks&amp;labelColor=182D25" alt="Landing website CI status on main"></a>
-  <a href="https://subloom-landing.baltii.tn"><img src="https://img.shields.io/badge/Deployed_on-Vercel-182D25?style=flat-square&amp;logo=vercel&amp;logoColor=white" alt="Deployed on Vercel"></a>
+  <a href="https://subloom.tn"><img src="https://img.shields.io/badge/Deployed_on-Vercel-182D25?style=flat-square&amp;logo=vercel&amp;logoColor=white" alt="Deployed on Vercel"></a>
   <a href="https://github.com/Baltii/Subloom/releases"><img src="https://img.shields.io/github/v/release/Baltii/Subloom?style=flat-square&amp;logo=github&amp;color=087C65&amp;label=app%20release" alt="Latest Subloom app release"></a>
 </p>
 
@@ -39,9 +39,9 @@
 </p>
 
 <p align="center">
-  <strong><a href="https://subloom-landing.baltii.tn">Visit the website ↗</a></strong>
-  &nbsp;·&nbsp; <a href="https://subloom-landing.baltii.tn/download">Download Subloom</a>
-  &nbsp;·&nbsp; <a href="https://subloom.baltii.tn">Open the app</a>
+  <strong><a href="https://subloom.tn">Visit the website ↗</a></strong>
+  &nbsp;·&nbsp; <a href="https://subloom.tn/download">Download Subloom</a>
+  &nbsp;·&nbsp; <a href="https://app.subloom.tn">Open the app</a>
   &nbsp;·&nbsp; <a href="https://github.com/Baltii/Subloom">App repository</a>
 </p>
 
@@ -81,14 +81,14 @@ The subscription records and prices shown in the website’s previews are illust
 
 ## Downloads that stay current
 
-[The download page](https://subloom-landing.baltii.tn/download) reads the latest published release from [Baltii/Subloom](https://github.com/Baltii/Subloom/releases/latest). It displays available installers, file sizes, release notes, and SHA-256 checksum links when supplied by the release.
+[The download page](https://subloom.tn/download) reads the latest published release from [Baltii/Subloom](https://github.com/Baltii/Subloom/releases/latest). It displays available installers, file sizes, release notes, and SHA-256 checksum links when supplied by the release.
 
 | Platform | Download or starting point |
 | --- | --- |
 | **Android** | The release’s APK, with a test-build notice when the filename identifies a test APK. |
 | **macOS** | Separate Apple silicon and Intel ZIPs. The app requires macOS 14 or later. |
 | **Windows** | The release’s 64-bit Windows installer. |
-| **Web** | [Open Subloom](https://subloom.baltii.tn) without installing anything. |
+| **Web** | [Open Subloom](https://app.subloom.tn) without installing anything. |
 | **iPhone / iPad** | Use the browser app; a public native iOS installer is not currently offered. |
 
 Release data uses Next.js server fetching with a **60-second revalidation interval**. Installer links can refresh after a new app release without a website redeployment. They are derived from GitHub’s release response rather than hardcoded versioned URLs.
@@ -178,13 +178,13 @@ Banner artwork, illustrations, logos, and fonts are stored in this repository. F
 
 ## Deployment
 
-The production website is **[subloom-landing.baltii.tn](https://subloom-landing.baltii.tn)**. The production branch is `main`; Vercel builds and deploys it independently from the application repository. Both page routes use the custom domain for canonical URLs.
+The production website is **[subloom.tn](https://subloom.tn)**. The production branch is `main`; Vercel builds and deploys it independently from the application repository. Both page routes use the custom domain for canonical URLs.
 
 | Destination | Purpose |
 | --- | --- |
-| [Website](https://subloom-landing.baltii.tn) | Product introduction and interactive sample |
-| [Downloads](https://subloom-landing.baltii.tn/download) | Installers and installation help |
-| [Browser app](https://subloom.baltii.tn) | The Subloom application |
+| [Website](https://subloom.tn) | Product introduction and interactive sample |
+| [Downloads](https://subloom.tn/download) | Installers and installation help |
+| [Browser app](https://app.subloom.tn) | The Subloom application |
 | [App releases](https://github.com/Baltii/Subloom/releases) | Official release files and notes |
 
 For a change, run the checks, open a pull request against `main`, review its preview deployment, and merge when ready. Keep app credentials and private configuration out of this repository. Generated builds and local agent/design workspaces are ignored.
